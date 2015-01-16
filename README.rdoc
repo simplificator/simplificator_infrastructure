@@ -12,17 +12,17 @@ It is implemented as exception app which is a special rack app which gets called
 
 
 
-=== Usage (Users)
+=== Usage
 
 In order to enable the error page handling do something like this:
 ````
-SimplificatorInfrastructure::ErrorPageHandler.register
-
-# As this will hide useful information for developers
-# you might want to do this depending on the environment
-if Rails.env.production?
   SimplificatorInfrastructure::ErrorPageHandler.register
-end
+
+  # As this will hide useful information for developers
+  # you might want to do this depending on the environment
+  if Rails.env.production?
+    SimplificatorInfrastructure::ErrorPageHandler.register
+  end
 
 ````
 
