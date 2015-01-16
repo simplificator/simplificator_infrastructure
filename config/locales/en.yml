@@ -1,0 +1,13 @@
+en:
+  simplificator_infrastructure:
+    errors:
+      page_title: 'An error occured'
+
+      generic:
+        title: 'Ohhh!'
+        lead: "We had a problem serving your request."
+        text: "We have been notified and will take care of this.<br/>Please try again later."
+      '404':
+        title: "Oooops!"
+        lead: "The page does not exist."
+        text: "Please go <a href=\"/\">back</a> and start over."

@@ -1,0 +1,39 @@
+body.simplificator_infrastrcture.errors {
+  background-color: #fff;
+  text-align: center;
+  font-family: 'Helvetica Neue', helvetica, arial sans-serif;
+}
+
+body.simplificator_infrastrcture.errors h1 {
+  color: #646464;
+  font-size: 75px;
+  font-weight: 300;
+}
+
+body.simplificator_infrastrcture.errors a {
+  color: #646464;
+}
+
+body.simplificator_infrastrcture.errors p.lead {
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  line-height: 45px;
+  color: #333333;
+}
+
+body.simplificator_infrastrcture.errors  p {
+  font-size: 16px;
+  margin-bottom: 40px;
+  line-height: 26px;
+  color: #888;
+}
+
+body.simplificator_infrastrcture.errors img.icon {
+  width: 80px;
+}
+
+body.simplificator_infrastrcture.errors img.logo {
+  width: 150px;
+  margin-top: 30px;
+}

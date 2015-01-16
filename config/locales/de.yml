@@ -1,0 +1,13 @@
+de:
+  simplificator_infrastructure:
+    errors:
+      page_title: 'Ein Fehler ist aufgetreten'
+
+      generic:
+        title: 'Ohhh!'
+        lead: "Die Anfrage konnte leider nicht beantwortet werden."
+        text: "Wir sind benachrichtig worden und schauen uns das an. Bitte versuchen Sie es später nochmals"
+      '404':
+        title: "Oooops!"
+        lead: "Diese Seite existiert nicht (mehr)"
+        text: "Bitte gehen Sie <a href=\"/\">zurück</a> und fangen nochmals an."

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= I18n.t('simplificator_infrastructure.errors.page_title') %></title>
+    <%= stylesheet_link_tag    "simplificator_infrastructure/application", media: "all" %>
+    <%= javascript_include_tag "simplificator_infrastructure/application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="errors simplificator_infrastrcture">
+    <%= yield %>
+  </body>
+</html>
