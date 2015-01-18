@@ -11,11 +11,11 @@ Gem::Specification.new do |s|
   s.email       = ["pascal.betz@simplificator.com"]
   s.homepage    = "http://www.simplificator.com"
   s.summary     = "Infrastructure support for Rails Apps"
-  s.description = "Infrastructure support for Rails Apps"
+  s.description = "Infrastructure support for Rails Apps. So far only error pages are implemented."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 4.2.0"
+  s.add_runtime_dependency 'rails', '~> 4.0', '>= 4.0.0'
 end
