@@ -11,10 +11,17 @@ Shows neat error pages when exceptions are raised.
 It is implemented as exception app which is a special rack app which gets called when an error occurs inside the rack middleware chain.
 
 
+=== Installation
+
+````
+  gem 'simplificator_infrastructure'
+````
+
 
 === Usage
 
 In order to enable the error page handling do something like this:
+
 ````
   SimplificatorInfrastructure::ErrorPageHandler.register
 

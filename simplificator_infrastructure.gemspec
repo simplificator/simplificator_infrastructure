@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = SimplificatorInfrastructure::VERSION
   s.authors     = ["Pascal Betz"]
   s.email       = ["pascal.betz@simplificator.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of SimplificatorInfrastructure."
-  s.description = "TODO: Description of SimplificatorInfrastructure."
+  s.homepage    = "http://www.simplificator.com"
+  s.summary     = "Infrastructure support for Rails Apps"
+  s.description = "Infrastructure support for Rails Apps"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
