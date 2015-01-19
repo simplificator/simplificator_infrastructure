@@ -1,6 +1,5 @@
 class ErrorPreviewsController < ApplicationController
   def index
-
   end
 
   def preview

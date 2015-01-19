@@ -1,14 +1,17 @@
 class SimplificatorInfrastructure::ErrorPageHandler
 
   def self.register
-    disable_all_requests_local
+    enable_error_page_rendering
     register_exception_app
   end
 
   private
 
-  def self.disable_all_requests_local
+  def self.enable_error_page_rendering
+    # Enables rendering of error pages.
+    # Those settings are usually set up properly in staging/production environments anyway.
     Rails.application.config.consider_all_requests_local = false
+    Rails.application.config.action_dispatch.show_exceptions = true
   end
 
   def self.register_exception_app

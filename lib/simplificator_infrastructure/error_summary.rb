@@ -42,8 +42,8 @@ class SimplificatorInfrastructure::ErrorSummary
   end
 
   def path_locale
-    match = request_path.match(/\A\/([a-z]{2})\/.*\z/)
-    locale = match[1].try(:to_sym)
+    match = request_path.try(:match, /\A\/([a-z]{2})\/.*\z/)
+    locale = match[1].try(:to_sym) if match
     nil_if_locale_is_unknown(locale)
   end
 
