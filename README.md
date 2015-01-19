@@ -1,43 +1,42 @@
-= SimplificatorInfrastructure
+# SimplificatorInfrastructure
 
 This project rocks and uses MIT-LICENSE.
 
 
 SimplificatorInfrastructure provides re-usable code for Rails Webapps.
 
-== Error Pages
+## Error Pages
 
 Shows neat error pages when exceptions are raised.
 It is implemented as exception app which is a special rack app which gets called when an error occurs inside the rack middleware chain.
 
 
-=== Installation
+### Installation
 
-````
-  gem 'simplificator_infrastructure'
-````
+```ruby
+gem 'simplificator_infrastructure'
+```
 
 
-=== Usage
+### Usage
 
 In order to enable the error page handling do something like this:
 
-````
-  SimplificatorInfrastructure::ErrorPageHandler.register
+```ruby
+SimplificatorInfrastructure::ErrorPageHandler.register
 
-  # As this will hide useful information for developers
-  # you might want to do this depending on the environment
-  if Rails.env.production?
-    SimplificatorInfrastructure::ErrorPageHandler.register
-  end
-
-````
+# As this will hide useful information for developers
+# you might want to do this depending on the environment
+if Rails.env.production?
+ SimplificatorInfrastructure::ErrorPageHandler.register
+end
+```
 
 Note: it's best if you do this in an after_initialize block or in an initializer file (initializers/*.rb) because
 in order for the error pages to work consider_all_requests_local needs to be false.
 Some environments set it to true which might override this again because of the order of the calls.
 
-=== Customize Error pages
+### Customize Error pages
 
 You can add an error page per HTTP status code. I.e. a custom 500, 404, ... error page. The gem comes with
 
@@ -56,7 +55,7 @@ Or add
 
 app/views/errors/generic_error.html.erb to replace the generic error view.
 
-=== Translations
+### Translations
 
 Translations are provided for
 
