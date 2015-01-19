@@ -33,7 +33,7 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
 
   def error_summary
     @error_summary ||= begin
-      ::SimplificatorInfrastructure::ErrorSummary.new(env: env)
+      ::SimplificatorInfrastructure::ErrorSummary.new(env)
     end
   end
 

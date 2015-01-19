@@ -2,8 +2,8 @@ class SimplificatorInfrastructure::ErrorSummary
 
   attr_reader :env
 
-  def initialize(options = {})
-    @env = options[:env]
+  def initialize(env)
+    @env = env
   end
 
   # detects the status code based on the exception that was thrown
@@ -21,29 +21,30 @@ class SimplificatorInfrastructure::ErrorSummary
   end
 
   # tries to detect locale based on #available_locales
-  # and a locale which is in the path, in the accept header or default
+  # and a locale which is in the path, in params (:locale), in the accept header or default
   def locale
-    detected_locale = path_locale || params_locale || accept_locale || default_locale
-    available_locales.include?(detected_locale) ? detected_locale : default_locale
+    path_locale || params_locale || accept_locale || default_locale
   end
 
   private
+
+  def request_path
+    env['REQUEST_PATH']
+  end
 
   def default_locale
     I18n.default_locale
   end
 
   def params_locale
-    locale = params['locale']
-    locale.to_sym if locale
+    locale = params['locale'].try(:to_sym)
+    nil_if_locale_is_unknown(locale)
   end
 
   def path_locale
-    path = env['REQUEST_PATH']
-    # RE is built on the fly to avoid load order issues with I18n.available_locales
-    locales_matcher = available_locales.map(&:to_s).join('|')
-    match = path.match(/\A\/(#{locales_matcher})\/.*\z/)
-    match[1].to_sym if match && match[1]
+    match = request_path.match(/\A\/([a-z]{2})\/.*\z/)
+    locale = match[1].try(:to_sym)
+    nil_if_locale_is_unknown(locale)
   end
 
   def available_locales
@@ -54,8 +55,13 @@ class SimplificatorInfrastructure::ErrorSummary
   # (ignoring de_DE style locales and expecting locales to be ordered by quality)
   def accept_locale
     accept_header = env['HTTP_ACCEPT_LANGUAGE']
-    accept_header.scan(/^[a-z-]{2}/).try(:first).try(:to_sym)
+    locale = accept_header.try(:scan, /[a-z]{2}/).try(:first).try(:to_sym)
+    nil_if_locale_is_unknown(locale)
   end
 
+
+  def nil_if_locale_is_unknown(locale)
+    available_locales.include?(locale) ? locale : nil
+  end
 
 end
