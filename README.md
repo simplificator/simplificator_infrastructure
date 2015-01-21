@@ -17,18 +17,10 @@ It is implemented as exception app which is a special rack app which gets called
 gem 'simplificator_infrastructure'
 ```
 
-
 ### Usage
-
-In order to enable the error page handling you need to register:
-
-```ruby
-SimplificatorInfrastructure::ErrorPageHandler.register
-```
-
+In order to activate the error pages you need to register your application.
 It's recommended that you add this in an initializer or after_initalize block.
 The error pages hide useful information for developers. Therefore you best scope it to production environment.
-
 
 ```ruby
 if Rails.env.production?
@@ -36,6 +28,9 @@ if Rails.env.production?
 end
 ```
 
+### Caveats
+
+If you have better_errors (or something else that hooks into error handling) configured then error pages might not work as expected.
 
 ### Customize
 
