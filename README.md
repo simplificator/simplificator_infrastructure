@@ -20,23 +20,31 @@ gem 'simplificator_infrastructure'
 
 ### Usage
 
-In order to enable the error page handling do something like this:
+In order to enable the error page handling you need to register:
 
 ```ruby
 SimplificatorInfrastructure::ErrorPageHandler.register
+```
 
-# As this will hide useful information for developers
-# you might want to do this depending on the environment
+It's recommended that you add this in an initializer or after_initalize block.
+The error pages hide useful information for developers. Therefore you best scope it to production environment.
+
+
+```ruby
 if Rails.env.production?
  SimplificatorInfrastructure::ErrorPageHandler.register
 end
 ```
 
-Note: it's best if you do this in an after_initialize block or in an initializer file (initializers/*.rb) because
-in order for the error pages to work consider_all_requests_local needs to be false.
-Some environments set it to true which might override this again because of the order of the calls.
 
-### Customize Error pages
+### Customize
+
+#### Logo
+
+You can provide a customer logo. If none is provided the default one (Simplificator) will be used.
+Save the logo as __app/assets/images/simplificator_infrastructure/errors/logo.png__ and it will be used instead of the default.
+
+#### Pages
 
 You can add an error page per HTTP status code. I.e. a custom 500, 404, ... error page. The gem comes with
 
@@ -47,13 +55,13 @@ If a specific page is present then it is rendered, else the generic one is shown
 
 To add or customize an error page you can add a view at
 
-app/views/errors/xxx.html.something
+__app/views/errors/xxx.html.something__
 
 where XXX is the status code
 
 Or add
 
-app/views/errors/generic_error.html.erb to replace the generic error view.
+__app/views/errors/generic_error.html.something__ to replace the generic error view.
 
 ### Translations
 
