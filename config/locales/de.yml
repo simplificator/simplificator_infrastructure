@@ -10,4 +10,4 @@ de:
       '404':
         title: "Oooops!"
         lead: "Diese Seite existiert nicht (mehr)"
-        text: "Bitte gehen Sie <a href=\"/\">zurück</a> und fangen nochmals an."
+        text: "Bitte gehen Sie <a href=\"%{referrer}\">zurück</a> und fangen nochmals an."
