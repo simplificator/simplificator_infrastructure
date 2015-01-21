@@ -6,6 +6,7 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
 
 
   def render_error
+    force_html_type
     render template, status: error_summary.status_code
   end
 
@@ -42,6 +43,12 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
     I18n.with_locale(error_summary.locale) do
       yield
     end
+  end
+
+  # This allows to find the html error templates even though something non-html was requested.
+  # Useful if an error occurs in PDF rendering or JSON API request.
+  def force_html_type
+    request.format = MIME::Types.type_for('html').first
   end
 
 end
