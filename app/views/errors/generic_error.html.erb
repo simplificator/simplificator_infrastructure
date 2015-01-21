@@ -1,9 +1,12 @@
 <div class="content">
   <h1 class="error"><%= I18n.t("simplificator_infrastructure.errors.generic.title") %></h1>
   <p class="lead"><%= I18n.t("simplificator_infrastructure.errors.generic.lead") %></p>
-  <p><%= I18n.t("simplificator_infrastructure.errors.generic.text").html_safe %></p>
+  <p><%= (I18n.t("simplificator_infrastructure.errors.generic.text") % {referrer: referrer_or_root(request)}).html_safe %></p>
   <p>
     <%= image_tag("simplificator_infrastructure/errors/error_generic.png", class: 'icon')%>
     <br/>
-    <%= image_tag('simplificator_infrastructure/errors/logo.png') %>
+
+    <a href="<%= referrer_or_root(request) %>">
+      <%= image_tag('simplificator_infrastructure/errors/logo.png', class: 'logo') %>
+    </a>
 </div>

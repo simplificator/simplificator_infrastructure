@@ -1,0 +1,13 @@
+fr:
+  simplificator_infrastructure:
+    errors:
+      '404':
+        lead: Cette page n'existe (plus).
+        text: Merci de bien vouloir <a href="%{referrer}">retourner</a> et de recommencer.
+        title: Oups!
+      generic:
+        lead: La requête n'a pas pu être traitée.
+        text: Nous avons été notifiés et allons traiter cet évènement. Merci de <a href="%{referrer}">réessayer</a>
+          plus tard.
+        title: Ohhh!
+      page_title: Il s'est produit une erreur.

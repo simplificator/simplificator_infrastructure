@@ -6,7 +6,7 @@ en:
       generic:
         title: 'Ohhh!'
         lead: "We had a problem serving your request."
-        text: "We have been notified and will take care of this.<br/>Please try again later."
+        text: "We have been notified and will take care of this.<br/>Please  <a href=\"%{referrer}\">try again</a> later."
       '404':
         title: "Oooops!"
         lead: "The page does not exist."

@@ -6,7 +6,7 @@ de:
       generic:
         title: 'Ohhh!'
         lead: "Die Anfrage konnte leider nicht beantwortet werden."
-        text: "Wir sind benachrichtig worden und schauen uns das an. Bitte versuchen Sie es später nochmals"
+        text: "Wir sind benachrichtig worden und schauen uns das an. Bitte versuchen Sie es später <a href=\"%{referrer}\">nochmals</a>."
       '404':
         title: "Oooops!"
         lead: "Diese Seite existiert nicht (mehr)"

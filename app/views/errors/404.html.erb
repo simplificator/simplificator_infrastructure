@@ -5,5 +5,7 @@
   <p>
     <%= image_tag("simplificator_infrastructure/errors/error_404.png", class: 'icon')%>
     <br/>
-    <%= image_tag('simplificator_infrastructure/errors/logo.png') %>
+    <a href="<%= referrer_or_root(request) %>">
+      <%= image_tag('simplificator_infrastructure/errors/logo.png', class: 'logo') %>
+    </a>
 </div>
