@@ -15,7 +15,7 @@ class SimplificatorInfrastructure::ErrorPageHandler
   end
 
   def self.register_exception_app
-    Rails.application.config.exceptions_app= lambda do |env|
+    Rails.application.config.exceptions_app = lambda do |env|
       action = SimplificatorInfrastructure::ErrorsController.action(:render_error)
       action.call(env)
     end
