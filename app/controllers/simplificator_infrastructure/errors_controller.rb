@@ -6,13 +6,14 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
 
 
   def render_error
-    force_html_type
-    render template, status: error_summary.status_code
+    render template_for_status_code, status: error_summary.status_code, content_type: 'text/html'
   end
 
   private
 
-  def template
+  # Returns the template for the status code that is associated to the current error.
+  # INCLUDING 'html' as type to force rendering of a the html view.
+  def template_for_status_code
     if specific_error_template_exists?
       specific_template
     else
@@ -21,11 +22,11 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
   end
 
   def specific_template
-    "errors/#{error_summary.status_code}"
+    "errors/#{error_summary.status_code}.html"
   end
 
   def generic_template
-    'errors/generic_error'
+    'errors/generic_error.html'
   end
 
   def specific_error_template_exists?
@@ -44,11 +45,4 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
       yield
     end
   end
-
-  # This allows to find the html error templates even though something non-html was requested.
-  # Useful if an error occurs in PDF rendering or JSON API request.
-  def force_html_type
-    request.format = MIME::Types.type_for('html').first
-  end
-
 end
