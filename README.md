@@ -5,17 +5,26 @@ This project rocks and uses MIT-LICENSE.
 
 SimplificatorInfrastructure provides re-usable code for Rails Webapps.
 
+
+## Installation
+
+```ruby
+gem 'simplificator_infrastructure'
+```
+
 ## Error Pages
 
 Shows neat error pages when exceptions are raised.
 It is implemented as exception app which is a special rack app which gets called when an error occurs inside the rack middleware chain.
 
+You can see a demo if you start the rails server for the included dummy app:
 
-### Installation
-
-```ruby
-gem 'simplificator_infrastructure'
 ```
+cd test/dummy
+rails server
+```
+
+and then navigate to http://localhost:3000
 
 ### Usage
 In order to activate the error pages you need to register your application.
@@ -64,6 +73,7 @@ Translations are provided for
 
 * de
 * en
+* fr
 
 If you want to add more translations just add the keys to your locale files.
 
