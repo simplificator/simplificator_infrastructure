@@ -6,13 +6,20 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
 
 
   def render_error
-    render template_for_status_code, status: error_summary.status_code, content_type: 'text/html'
+    respond_to do |format|
+      format.any do
+        render template_for_status_code, status: error_summary.status_code, content_type: 'text/html'
+      end
+      format.json do
+        render json: {message: error_summary.exception.message}, status: error_summary.status_code
+      end
+    end
   end
 
   private
 
   # Returns the template for the status code that is associated to the current error.
-  # INCLUDING 'html' as type to force rendering of a the html view.
+  # INCLUDING 'html' as type to force rendering of the html view.
   def template_for_status_code
     if specific_error_template_exists?
       specific_template
@@ -30,7 +37,7 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
   end
 
   def specific_error_template_exists?
-    lookup_context.template_exists?(error_summary.status_code, "errors", false)
+    lookup_context.template_exists?("#{error_summary.status_code}.html", "errors", false)
   end
 
   def error_summary
