@@ -11,7 +11,7 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
         render template_for_status_code, status: error_summary.status_code, content_type: 'text/html'
       end
       format.json do
-        render json: {message: error_summary.exception.message}, status: error_summary.status_code
+        render json: {message: "An error occured"}, status: error_summary.status_code
       end
     end
   end
