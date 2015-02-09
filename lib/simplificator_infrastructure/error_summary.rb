@@ -1,4 +1,5 @@
 class SimplificatorInfrastructure::ErrorSummary
+  include SimplificatorInfrastructure::LocaleDetection
 
   attr_reader :env
 
@@ -23,45 +24,23 @@ class SimplificatorInfrastructure::ErrorSummary
   # tries to detect locale based on #available_locales
   # and a locale which is in the path, in params (:locale), in the accept header or default
   def locale
-    path_locale || params_locale || accept_locale || default_locale
+    locale_from_path || locale_from_params || locale_from_header || locale_default
   end
 
   private
+
+  def request
+    @request ||= Rack::Request.new(env)
+  end
 
   def request_path
     env['REQUEST_PATH']
   end
 
-  def default_locale
-    I18n.default_locale
-  end
-
-  def params_locale
-    locale = params['locale'].try(:to_sym)
-    nil_if_locale_is_unknown(locale)
-  end
-
-  def path_locale
+  def locale_from_path
     match = request_path.try(:match, /\A\/([a-z]{2})\/.*\z/)
     locale = match[1].try(:to_sym) if match
-    nil_if_locale_is_unknown(locale)
-  end
-
-  def available_locales
-    I18n.available_locales
-  end
-
-  # Gets the first two letter locale from HTTP_ACCEPT_LANGUAGE header
-  # (ignoring de_DE style locales and expecting locales to be ordered by quality)
-  def accept_locale
-    accept_header = env['HTTP_ACCEPT_LANGUAGE']
-    locale = accept_header.try(:scan, /[a-z]{2}/).try(:first).try(:to_sym)
-    nil_if_locale_is_unknown(locale)
-  end
-
-
-  def nil_if_locale_is_unknown(locale)
-    available_locales.include?(locale) ? locale : nil
+    available_locale_or_nil(locale)
   end
 
 end

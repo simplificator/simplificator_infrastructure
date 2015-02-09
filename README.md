@@ -12,6 +12,28 @@ SimplificatorInfrastructure provides re-usable code for Rails Webapps.
 gem 'simplificator_infrastructure'
 ```
 
+## Locale Detection
+
+In your ApplicationController (or something that responds to _request_ and _params_) add
+
+```ruby
+include SimplificatorInfrastructure::LocaleDetection
+```
+
+You can then use the various methods provided by this module:
+
+* detect_locale (tries to find the locale from params, then header then default)
+* locale_from_params
+* locale_from_header
+* locale_default
+
+Extraction is DOS safe in that it only creates symbols for known locales (for pre 2.2 Rubies).
+
+Note:
+Make sure I18n.available_locales and I18n.default_locale are properly set.
+
+
+
 ## Error Pages
 
 Shows neat error pages when exceptions are raised.
