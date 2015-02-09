@@ -1,4 +1,4 @@
-require 'simplificator_infrastructure/locale_detection'
-require 'simplificator_infrastructure/engine'
 module SimplificatorInfrastructure
 end
+require 'simplificator_infrastructure/locale_detection'
+require 'simplificator_infrastructure/engine'
