@@ -13,3 +13,8 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 gem "codeclimate-test-reporter", group: :test, require: nil
+
+group :test do
+  gem 'rails-controller-testing'
+  gem 'sqlite3'
+end

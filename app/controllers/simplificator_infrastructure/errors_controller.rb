@@ -1,5 +1,5 @@
 class SimplificatorInfrastructure::ErrorsController < ActionController::Base
-  around_filter :with_locale
+  around_action :with_locale
 
   layout 'simplificator_infrastructure/errors'
   helper_method :error_summary
@@ -42,7 +42,7 @@ class SimplificatorInfrastructure::ErrorsController < ActionController::Base
 
   def error_summary
     @error_summary ||= begin
-      ::SimplificatorInfrastructure::ErrorSummary.new(env)
+      ::SimplificatorInfrastructure::ErrorSummary.new(request.env)
     end
   end
 

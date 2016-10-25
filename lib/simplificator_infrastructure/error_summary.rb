@@ -1,3 +1,5 @@
+require 'simplificator_infrastructure/locale_detection'
+
 class SimplificatorInfrastructure::ErrorSummary
   include SimplificatorInfrastructure::LocaleDetection
 
